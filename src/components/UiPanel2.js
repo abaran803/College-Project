@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Board from './Board'
 import ratImageLogo from '../assets/rat.png';
 import poster from '../assets/posters/nQueen.png';
@@ -12,7 +12,6 @@ const UiPanel2 = () => {
   const [showBoard, setShowBoard] = useState();
   const [queenBoard, setQueenBoard] = useState([]);
 
-  const refs = useRef();
     
 
 
@@ -44,7 +43,7 @@ let notPossible = async (row, col) => {
 async function isSafeQ(row, col) {
     await notPossible(row, col);
     for (let i = 0; i < col; i++) {
-        if (queenBoard[row][i] == 1) {
+        if (queenBoard[row][i] === 1) {
             console.log("H1");
             return false
         }
@@ -70,11 +69,11 @@ async function solveNQUtil(col) {
     for (let i = 0; i < boardSize; i++) {
         let safeStatus = await isSafeQ(i, col)
         console.log(safeStatus);
-        if (safeStatus == true) {
+        if (safeStatus === true) {
           await sleep(speed);
                 document.getElementById(`colR${i}${col}`).innerHTML = '1';
             queenBoard[i][col] = 1
-            if (await solveNQUtil(col + 1) == true) {
+            if (await solveNQUtil(col + 1) === true) {
                 return true
             }
             await sleep(speed);
@@ -88,7 +87,7 @@ async function solveNQUtil(col) {
     return false
 }
 async function solveNQ() {
-    if (await solveNQUtil(0) == false) {
+    if (await solveNQUtil(0) === false) {
         alert("Solution does not exist")
         document.querySelector('table').innerHTML = "";
         return false
@@ -126,7 +125,7 @@ async function solveNQ() {
     <div className='ui-panel'>
         <div className='ui-panel__header'>Header</div>
         <div className='ui-panel__board text-center'>
-            { (showBoard && boardSize && boardSize) ? <Board showBoard={showBoard} boardSize={boardSize} rowCnt={boardSize} colCnt={boardSize} /> : <img className='img-fluid' src={poster} />}
+            { (showBoard && boardSize && boardSize) ? <Board showBoard={showBoard} boardSize={boardSize} rowCnt={boardSize} colCnt={boardSize} /> : <img className='img-fluid' src={poster} alt='poster' />}
         </div>
         { !showBoard && (
           <div className='ui-panel__action'>

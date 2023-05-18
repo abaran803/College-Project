@@ -1,6 +1,6 @@
 import React from 'react'
 import TopBar from './TopBar'
-import SideBar from './SideBar.js.old'
+import SideBar from './SideBar.js'
 import UiPanel1 from './UiPanel1'
 import UiPanel2 from './UiPanel2'
 import UiPanel3 from './UiPanel3'

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import Board from './Board'
 import ratImageLogo from '../assets/rat.png';
 import poster from '../assets/posters/rithm.png';
@@ -23,14 +23,14 @@ const UiPanel1 = () => {
 
   const toggleBlock = (i, j) => {
     if (editable) {
-      document.querySelector('#colR' + i + j).style.background = document.querySelector('#colR' + i + j).style.background === "black" ? ((i + j) % 2 ? "lightgrey" : "white") : "black";
+      document.querySelector('#colR' + i + j).style.background = document.querySelector('#colR' + i + j).style.background === "black" ? ((i + j) % 2 === 0 ? "grey" : "white") : "black";
         maze[i][j] = maze[i][j] ? 0 : 1;
     }
   }
 
   function isSafeR(x, y) {
       return (x >= 0 && x < rowCnt && y >= 0
-          && y < colCnt && maze[x][y] == 1);
+          && y < colCnt && maze[x][y] === 1);
   }
 
   async function sleep(timer) {
@@ -49,7 +49,7 @@ const UiPanel1 = () => {
           }
       }
 
-      if (await solveMazeUtil(0, 0, sol) == false) {
+      if (await solveMazeUtil(0, 0, sol) === false) {
           // document.write("Solution doesn't exist");
           return false;
       }
@@ -57,7 +57,7 @@ const UiPanel1 = () => {
       return true;
   }
   async function solveMazeUtil(x, y, sol) {
-      if (x == rowCnt - 1 && y == colCnt - 1 && maze[x][y] == 1) {
+      if (x === rowCnt - 1 && y === colCnt - 1 && maze[x][y] === 1) {
         await sleep(ratSpeed);
         document.querySelector('#colR' + x + y).style.background = "green";
         document.querySelector('#colR' + x + y).innerHTML = '';
@@ -65,8 +65,8 @@ const UiPanel1 = () => {
         sol[x][y] = 1;
         return true;
       }
-      if (isSafeR(x, y) == true) {
-          if (sol[x][y] == 1)
+      if (isSafeR(x, y) === true) {
+          if (sol[x][y] === 1)
               return false;
 
           await sleep(ratSpeed);
@@ -92,7 +92,7 @@ const UiPanel1 = () => {
           await sleep(ratSpeed);
           document.querySelector('#colR' + x + y).style.background = 'red';
           await sleep(ratSpeed);
-          document.querySelector('#colR' + x + y).style.background = ((x + y) % 2) ? "lightgrey" : "white";
+          document.querySelector('#colR' + x + y).style.background = ((x + y) % 2 === 0) ? "grey" : "white";
           sol[x][y] = 0;
           return false;
       }
@@ -109,7 +109,7 @@ const UiPanel1 = () => {
       maze.push(tmp);
     }
     setShowBoard(true);
-    document.querySelector('#colR' + 0 + 0).append(ratImage);
+    // document.querySelector('#colR' + 0 + 0).append(ratImage);
   }
 
   const startAlgoHandler = () => {
@@ -141,10 +141,10 @@ const UiPanel1 = () => {
         {showBoard && 
           <div className='d-flex justify-content-center'>
             <button onClick={clearAll}>Back</button>
-            <button className='mx-2' onClick={() => setEditable(item => !item)}>
+            {!started && <button className='mx-2' onClick={() => setEditable(item => !item)}>
               {editable ? 'Stop' : 'Start'} Editing
-            </button>
-            <button onClick={startAlgoHandler}>start</button>
+            </button>}
+            {!started && <button onClick={startAlgoHandler}>start</button>}
           </div>
         }
     </div>

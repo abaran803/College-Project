@@ -10,9 +10,8 @@ import TopBar from './components/TopBar'
 import SideBar from './components/SideBar.js'
 import UiPanel1 from './components/UiPanel1'
 import UiPanel2 from './components/UiPanel2'
-import UiPanel3 from './components/UiPanel3'
+import UiPanel3 from './components/UiPanel3.js'
 import CodePanel from './components/CodePanel'
-import DashBoard from './components/DashBoard';
 import Home from './pages/Home';
 import Quiz from './pages/Quiz';
 import Leaderboard from './pages/Leaderboard';
