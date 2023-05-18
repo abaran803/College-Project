@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Board from './Board'
 import ratImageLogo from '../assets/rat.png';
-import poster from '../assets/posters/sudoku.png';
+import poster from '../assets/posters/nQueen.png';
 
 import './UiPanel.css';
 
@@ -124,7 +124,7 @@ async function solveNQ() {
 
   return (
     <div className='ui-panel'>
-        <div className='ui-panel__header'></div>
+        <div className='ui-panel__header'>Header</div>
         <div className='ui-panel__board text-center'>
             { (showBoard && boardSize && boardSize) ? <Board showBoard={showBoard} boardSize={boardSize} rowCnt={boardSize} colCnt={boardSize} /> : <img className='img-fluid' src={poster} />}
         </div>

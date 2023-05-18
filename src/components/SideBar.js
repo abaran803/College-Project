@@ -5,23 +5,16 @@ import './SideBar.css';
 
 const SideBar = () => {
   return (
-    <div class="sidebar">
-        <ul type="none">
-            <li class="brand"><i class="fa-brands fa-bandcamp"></i>Visualizer</li>
-            <li class="search"><input class="searchbar" type="text" placeholder="&#xf002;  Search..." /></li>
-            <li class="menu-item"><a href="#home"><i class="fa-brands fa-r-project"></i>Dashboard</a></li>
-            <li class="menu-item"><a href="#project1"><i class="fa-brands fa-r-project"></i>N-Queen</a></li>
-            <li class="menu-item"><a href="#project2"><i class="fa-brands fa-r-project"></i>Sudoku Solver</a></li>
-            <li class="menu-item"><a href="#project3"><i class="fa-brands fa-r-project"></i>Rat in the Maze</a></li>
-            <li class="menu-item"><a href="#project4"><i class="fa-brands fa-r-project"></i>Project4</a></li>
-            <li class="sidebar-bottom">
-                <div class="profile-icon"></div>
-                <div class="txt">
-                    <div class="dev-name">Ayush Baranwal</div>
-                    <div class="dev-designation">Web Developer</div>
-                </div>
-            </li>
-        </ul>
+    <div className="sidebar h-100 row flex-column">
+      <div className="sidebar__top col-md-1">Top</div>
+      <div className="sidebar__menus col-md-10">
+        <Group items={[
+          {name: 'i1', path: '/algo1'}, 
+          {name: 'i2', path: '/algo2'}, 
+          {name: 'i3', path: '/algo3'}
+        ]} />
+      </div>
+      <div className="sidebar__bottom col-md-1">Bottom</div>
     </div>
   )
 }

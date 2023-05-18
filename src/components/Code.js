@@ -1,4 +1,5 @@
 import React from 'react'
+import './Code.css';
 
 const Code = ({code}) => {
 
@@ -16,7 +17,7 @@ const Code = ({code}) => {
         console.log(code);
 
   return (
-    <div>
+    <div className='code'>
         <pre>
             {code}
         </pre>

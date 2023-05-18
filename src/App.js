@@ -7,7 +7,7 @@ import {
   Route
 } from "react-router-dom";
 import TopBar from './components/TopBar'
-import SideBar from './components/SideBar'
+import SideBar from './components/SideBar.js'
 import UiPanel1 from './components/UiPanel1'
 import UiPanel2 from './components/UiPanel2'
 import UiPanel3 from './components/UiPanel3'
@@ -54,9 +54,13 @@ class App extends Component {
                   </Switch>
               </div>
               {/* CodePanel */}
-              <div className='col-md-4 bg-danger'>
-                  <CodePanel />
-              </div>
+              <Switch>
+                <Route path="/algo/:name">
+                <div className='col-md-4 bg-danger'>
+                    <CodePanel />
+                </div>
+                </Route>
+              </Switch>
           </div>
           </Route>
           <Route path='/' exact><Home /></Route>

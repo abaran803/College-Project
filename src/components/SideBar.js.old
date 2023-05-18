@@ -5,7 +5,7 @@ import './SideBar.css';
 
 const SideBar = () => {
   return (
-    <div id="sidebar">
+    <div class="sidebar">
         <ul type="none">
             <li class="brand"><i class="fa-brands fa-bandcamp"></i>Visualizer</li>
             <li class="search"><input class="searchbar" type="text" placeholder="&#xf002;  Search..." /></li>

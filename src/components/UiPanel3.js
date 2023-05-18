@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Board from './Board'
 import ratImageLogo from '../assets/rat.png';
+import poster from '../assets/posters/sudoku.png';
 
 import './UiPanel.css';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
@@ -75,12 +76,6 @@ function print() {
                 selectedCell.style.color = "white";
             }
         }
-    }
-}
-
-function clearAllTimeouts() {
-    for (let i = 0; i < allTimeOuts.length; i++) {
-        clearTimeout(allTimeOuts[i]);
     }
 }
 
@@ -188,20 +183,16 @@ function solveSudoku() {
 
   return (
     <div className='ui-panel'>
-        <div className='ui-panel__header'></div>
-        <div className='ui-panel__board text-center'>
+        <div className='ui-panel__header'>Header</div>
+        { showBoard ? (
+          <div className='ui-panel__board text-center'>
             <Board algo={name} showBoard={true} rowCnt={N} colCnt={N} sudokuData={board} />
-        </div>
-        {/* { !showBoard && (
-          <div className='ui-panel__action'>
-            <input type="number" onChange={(e) => setRowCnt(e.target.value)} placeholder='Enter Row Count'/>
-            <input type="number" onChange={(e) => setColCnt((e.target.value))} placeholder='Enter Col Count'/>
-            <button onClick={showBoardHandler} className='bg bg-success px-2 py-1 rounded'>
-              Create Board
-            </button>
           </div>
-        ) } */}
-        {/* {showBoard &&  */}
+        ) : <div>
+              <img className='img-fluid' src={poster} />
+            </div>
+        }
+        { showBoard && 
           <div className='d-flex justify-content-center'>
             <button onClick={clearAll}>Back</button>
             <button className='mx-2' onClick={() => setEditable(item => !item)}>
@@ -209,7 +200,8 @@ function solveSudoku() {
             </button>
             <button onClick={startAlgoHandler}>start</button>
           </div>
-        {/* } */}
+        }
+        {!showBoard && <button onClick={() => setShowBoard(true)}>Show Board</button>}
     </div>
   )
 }

@@ -7,6 +7,8 @@ const CodePanel = () => {
 
   const {name} = useParams();
 
+  console.log(name);
+
   // const [code, setCode] = useState();
     const [selectedCode, setSelectedCode] = useState();
     const [selectedLang, setSelectedLang] = useState();
