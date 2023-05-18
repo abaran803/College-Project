@@ -1,0 +1,13 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.dashboard__topbar  {
+    flex: 1;
+}
+
+.dashboard__panel {
+    flex: 10;
+}
