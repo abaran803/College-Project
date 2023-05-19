@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Board from './Board'
-import ratImageLogo from '../assets/rat.png';
 import poster from '../assets/posters/sudoku.png';
 
 import './UiPanel.css';
@@ -23,7 +22,6 @@ const UiPanel3 = () => {
   const [started, setStarted] = useState();
   const [showBoard, setShowBoard] = useState();
   const [editable, setEditable] = useState();
-  const [sudokuSpeed, setSudokuSpeed] = useState(100);
 
   async function sleep(timer) {
     const promise = new Promise((resolve, reject) => setTimeout(() => {
@@ -50,13 +48,13 @@ async function solveSudoku(row, col)
        indexed matrix) ,
        we are returning true to avoid further
        backtracking       */
-    if (row == N - 1 && col == N)
+    if (row === N - 1 && col === N)
         return true;
  
     // Check if column value  becomes 9 ,
     // we move to next row
     // and column start from 0
-    if (col == N)
+    if (col === N)
     {
         row++;
         col = 0;
@@ -66,7 +64,7 @@ async function solveSudoku(row, col)
     // of the grid already
     // contains value >0, we iterate
     // for next column
-    if (board[row][col] != 0)
+    if (board[row][col] !== 0)
         return await solveSudoku(row, col + 1);
  
     for(let num = 1; num < 10; num++)
@@ -84,7 +82,6 @@ async function solveSudoku(row, col)
             assuming our assigned num in the position
             is correct */
             board[row][col] = num;
-            console.log('#colR' + row + col);
             await sleep(10);
             document.querySelector('#colR' + row + col).style.background = 'lightgreen';
             document.querySelector('#colR' + row + col).value = board[row][col];
@@ -101,23 +98,10 @@ async function solveSudoku(row, col)
            assumption with diff num value   */
         board[row][col] = 0;
         document.querySelector('#colR' + row + col).style.background = defaultColor;
-        console.log('#colR' + row + col);
         await sleep(10);
         document.querySelector('#colR' + row + col).value = board[row][col];
     }
     return false;
-}
- 
-/* A utility function to print grid */
-function print()
-{
-    for(let i = 0; i < N; i++)
-    {
-        for(let j = 0; j < N; j++)
-            document.write(board[i][j] + " ");
-             
-        document.write("<br>");
-    }
 }
  
 // Check whether it will be legal
@@ -130,14 +114,14 @@ async function isSafe(row, col, num)
     // in the similar row , we
     // return false
     for(let x = 0; x <= 8; x++)
-        if (board[row][x] == num)
+        if (board[row][x] === num)
             return false;
  
     // Check if we find the same num
     // in the similar column ,
     // we return false
     for(let x = 0; x <= 8; x++)
-        if (board[x][col] == num)
+        if (board[x][col] === num)
             return false;
  
     // Check if we find the same num
@@ -148,7 +132,7 @@ async function isSafe(row, col, num)
          
     for(let i = 0; i < 3; i++)
         for(let j = 0; j < 3; j++)
-            if (board[i + startRow][j + startCol] == num)
+            if (board[i + startRow][j + startCol] === num)
                 return false;
  
     return true;
@@ -192,20 +176,6 @@ const clearAll = () => {
   setShowBoard(false);
 }
 
-function print() {
-let size = 9;
-for (let i = 0; i < size; i++) {
-    for (let j = 0; j < size; j++) {
-        if (board[i][j]) {
-            let selectedCell = document.querySelector("#colR" + i + j);
-            selectedCell.value = board[i][j];
-            selectedCell.style.background = "grey";
-            selectedCell.style.color = "white";
-        }
-    }
-}
-}
-
 
 
 
@@ -230,7 +200,7 @@ for (let i = 0; i < size; i++) {
             <Board algo={'alog3'} showBoard={true} rowCnt={9} colCnt={9} isSudoku={true} editable={editable} />
           </div>
           <div style={showBoard ? {display: 'none'} : {}}>
-            <img className='img-fluid' src={poster} placeholder='poster' />
+            <img className='img-fluid' src={poster} alt='poster' />
           </div>
         { showBoard && 
           <div className='d-flex justify-content-center'>

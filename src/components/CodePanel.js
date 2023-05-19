@@ -7,8 +7,6 @@ const CodePanel = () => {
 
   const {name} = useParams();
 
-  console.log(name);
-
   // const [code, setCode] = useState();
     const [selectedCode, setSelectedCode] = useState();
     const [selectedLang, setSelectedLang] = useState();
@@ -66,7 +64,6 @@ const CodePanel = () => {
     useEffect(() => {
       const selectedCode = async () => {
         const code = await getCodes(selectedLang || 'C++', name);
-        console.log(selectedLang, code);
         setSelectedCode(code);
       }
       selectedCode();

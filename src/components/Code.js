@@ -14,7 +14,6 @@ const Code = ({code}) => {
     //     }
     // `
 
-        console.log(code);
 
   return (
     <div className='code'>

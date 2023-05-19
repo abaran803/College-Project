@@ -22,13 +22,13 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Switch>
 
         <div className='app'>
           {/* TopBar */}
           <div className='bg-success app__topbar pb-1'>
               <TopBar />
           </div>
+        <Switch>
           <Route path='/algo'>
           <div className='d-flex app__panel'>
               {/* SideBar */}
@@ -67,8 +67,8 @@ class App extends Component {
           <Route path='/quiz'><Quiz /></Route>
           <Route path='/leaderboard'><Leaderboard /></Route>
           <Route path='/about'><About /></Route>
-        </div>
         </Switch>
+        </div>
       </Router>
     );
   }

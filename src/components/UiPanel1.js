@@ -127,7 +127,7 @@ const UiPanel1 = () => {
     <div className='ui-panel'>
         <div className='ui-panel__header'>Header</div>
         <div className='ui-panel__board text-center'>
-            { (showBoard && rowCnt && colCnt) ? <Board toggleBlock={toggleBlock} showBoard={showBoard} rowCnt={rowCnt} colCnt={colCnt} /> : <img className='img-fluid' src={poster} />}
+            { (showBoard && rowCnt && colCnt) ? <Board toggleBlock={toggleBlock} showBoard={showBoard} rowCnt={rowCnt} colCnt={colCnt} /> : <img className='img-fluid' src={poster} alt="poster" />}
         </div>
         { !showBoard && (
           <div className='ui-panel__action'>

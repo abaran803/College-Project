@@ -7,7 +7,6 @@ import './UiPanel.css';
 
 const UiPanel2 = () => {
 
-  const [started, setStarted] = useState();
   const [boardSize, setBoardSize] = useState();
   const [showBoard, setShowBoard] = useState();
   const [queenBoard, setQueenBoard] = useState([]);
@@ -15,7 +14,6 @@ const UiPanel2 = () => {
     
 
 
-let currentTime = 1000;
 var speed;
 let queenImage = document.createElement('img');
 let queenWrapper = document.createElement('div');
@@ -31,7 +29,6 @@ async function sleep(timer) {
 }
 
 let notPossible = async (row, col) => {
-    currentTime += speed;
     await sleep(speed);
         // document.querySelector('.status').innerHTML = `Checking Row ${row} and Column ${col}`;
         document.getElementById(`colR${row}${col}`).appendChild(queenImage);
@@ -44,18 +41,15 @@ async function isSafeQ(row, col) {
     await notPossible(row, col);
     for (let i = 0; i < col; i++) {
         if (queenBoard[row][i] === 1) {
-            console.log("H1");
             return false
         }
     }
     for (let i = row, j = col; i >= 0 && j >= 0; i--, j--)
         if (queenBoard[i][j]) {
-            console.log("H2");
             return false
         }
     for (let i = row, j = col; j >= 0 && i < boardSize; i++, j--)
         if (queenBoard[i][j]) {
-            console.log("H3");
             return false
         }
 
@@ -63,12 +57,10 @@ async function isSafeQ(row, col) {
 }
 
 async function solveNQUtil(col) {
-    console.log(col, boardSize);
     if (col >= boardSize)
         return true
     for (let i = 0; i < boardSize; i++) {
         let safeStatus = await isSafeQ(i, col)
-        console.log(safeStatus);
         if (safeStatus === true) {
           await sleep(speed);
                 document.getElementById(`colR${i}${col}`).innerHTML = '1';
@@ -108,16 +100,12 @@ async function solveNQ() {
   }
 
   const startAlgoHandler = () => {
-    setStarted(true);
     speed = 100;
-    currentTime = 1000;
     solveNQ();
-    console.log(queenBoard);
   }
 
   const clearAll = () => {
     setQueenBoard([]);
-    setStarted(false);
     setShowBoard(false);
   }
 
