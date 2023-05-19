@@ -1,0 +1,24 @@
+--------------------------------------------- API ---------------------------------------------------
+
+getPoster(algo) -> return poster based on algo
+algo -> nameOfAlgorithm
+
+getCodes(lang, algo) -> return code of algorithm in specific language
+lang -> C++, Java, Python
+algo -> Name of algorithm
+
+getLeaderBoard(pageNumber, count) -> Get the leaderboard list in sorted order based on score
+Schema -> { name, numberOfQuizAttained, score }
+
+getQuiz(algo) -> list of questions in algorithm for quiz
+Schema -> { question, optionsArray, correctAns } -> in DB
+correctAns will use to check if the selected ans is correct in backend
+correctAns will not be send to frontend
+
+getQuizzes(count) -> List of quizzes with given count
+getAlgorithms(count) -> List of algorithms with given count
+
+-------------------------------------------- Pages --------------------------------------------------
+
+About -> Static Page
+Home/Dashboard -> Static Page
