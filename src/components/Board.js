@@ -17,7 +17,7 @@ const Board = ({showBoard, rowCnt, colCnt, toggleBlock, isSudoku, algo, editable
         {showBoard ? <table>{
           rowArr.map((i, ind) => <tr key={ind}>{
             colArr.map((i, ind1) => <td key={ind1} className='px-3 py-2 position-relative' id={!isSudoku && ('colR'+ind+ind1)} onClick={toggleBlock ? () => toggleBlock(ind, ind1) : ''} style={{background: (ind+ind1)%2 ? 'white' : 'grey'}}>
-              {isSudoku ? <input type='text' id={'colR'+ind+ind1} style={{width: '100%', border: 'none', background: 'inherit', outline: 'none'}} disabled={!editable} /> : <div>&nbsp;</div>}
+              {isSudoku ? <input type='number' id={'colR'+ind+ind1} style={{width: '100%', border: 'none', background: 'inherit', outline: 'none'}} disabled={!editable} /> : <div>&nbsp;</div>}
             </td>)
           }</tr>)
         }

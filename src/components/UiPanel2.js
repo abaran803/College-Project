@@ -10,11 +10,11 @@ const UiPanel2 = () => {
   const [boardSize, setBoardSize] = useState();
   const [showBoard, setShowBoard] = useState();
   const [queenBoard, setQueenBoard] = useState([]);
+  const [speed, setSpeed] = useState();
 
     
 
 
-var speed;
 let queenImage = document.createElement('img');
 let queenWrapper = document.createElement('div');
 queenImage.src = ratImageLogo;
@@ -100,7 +100,7 @@ async function solveNQ() {
   }
 
   const startAlgoHandler = () => {
-    speed = 100;
+    if(!speed) setSpeed(100);
     solveNQ();
   }
 
@@ -117,6 +117,7 @@ async function solveNQ() {
         </div>
         { !showBoard && (
           <div className='ui-panel__action'>
+            <input type="number" onChange={(e) => setSpeed(e.target.value)} placeholder='Set Speed' />
             <input type="number" onChange={(e) => setBoardSize(e.target.value)} placeholder='Enter Board Size'/>
             <button onClick={showBoardHandler} className='bg bg-success px-2 py-1 rounded'>
               Create Board

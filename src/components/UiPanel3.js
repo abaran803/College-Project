@@ -64,7 +64,7 @@ async function solveSudoku(row, col)
     // of the grid already
     // contains value >0, we iterate
     // for next column
-    if (board[row][col] !== 0)
+    if (board[row][col] != 0)
         return await solveSudoku(row, col + 1);
  
     for(let num = 1; num < 10; num++)
@@ -114,14 +114,14 @@ async function isSafe(row, col, num)
     // in the similar row , we
     // return false
     for(let x = 0; x <= 8; x++)
-        if (board[row][x] === num)
+        if (board[row][x] == num)
             return false;
  
     // Check if we find the same num
     // in the similar column ,
     // we return false
     for(let x = 0; x <= 8; x++)
-        if (board[x][col] === num)
+        if (board[x][col] == num)
             return false;
  
     // Check if we find the same num
@@ -132,7 +132,7 @@ async function isSafe(row, col, num)
          
     for(let i = 0; i < 3; i++)
         for(let j = 0; j < 3; j++)
-            if (board[i + startRow][j + startCol] === num)
+            if (board[i + startRow][j + startCol] == num)
                 return false;
  
     return true;

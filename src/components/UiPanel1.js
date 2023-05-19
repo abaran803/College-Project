@@ -12,8 +12,7 @@ const UiPanel1 = () => {
   const [colCnt, setColCnt] = useState();
   const [showBoard, setShowBoard] = useState();
   const [editable, setEditable] = useState();
-    
-  let ratSpeed = 200;
+  const [ratSpeed, setRatSpeed] = useState(200);
 
   let ratImage = document.createElement('img');
   ratImage.src = ratImageLogo;
@@ -131,6 +130,7 @@ const UiPanel1 = () => {
         </div>
         { !showBoard && (
           <div className='ui-panel__action'>
+            <input type="number" onChange={(e) => setRatSpeed(e.target.value)} placeholder='Set Speed' />
             <input type="number" onChange={(e) => setRowCnt(e.target.value)} placeholder='Enter Row Count'/>
             <input type="number" onChange={(e) => setColCnt((e.target.value))} placeholder='Enter Col Count'/>
             <button onClick={showBoardHandler} className='bg bg-success px-2 py-1 rounded'>
